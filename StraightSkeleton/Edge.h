@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <format>
+//#include <format>
 #include <memory>
 #include "Vector2d.h"
 #include "LineParametric2d.h"
@@ -29,5 +29,6 @@ public:
     spll2d lineLinear2d = nullptr;                  
     std::string ToString() const override;
     Edge& operator=(const Edge& val);
+    CircularNodeType GetType() const override { return CN_Edge; }
 };
 

@@ -14,4 +14,5 @@ public:
     MultiSplitEvent(spv2d point, double distance, spvic chains);
     ~MultiSplitEvent();
     bool IsObsolete() override;
+    SkeletonEventType GetType() const override { return SE_MultiSplit; }
 };

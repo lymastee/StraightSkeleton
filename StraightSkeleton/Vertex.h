@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <format>
+//#include <format>
 #include <limits>
 #include "Edge.h"
 #include "Vector2d.h"
@@ -30,6 +30,7 @@ public:
     Vertex(spv2d point, double distance, splp2d bisector, spe previousEdge, spe nextEdge);
     ~Vertex() override;
     Vertex& operator = (const Vertex& other);
+    CircularNodeType GetType() const override { return CN_Vertex; }
     std::string ToString() const override;
     spfn LeftFace = nullptr;
     spfn RightFace = nullptr;

@@ -1,10 +1,13 @@
 #include "SingleEdgeChain.h"
 
+#define ASSERT _ASSERT
+
 SingleEdgeChain::SingleEdgeChain(spe oppositeEdge, spv nextVertex)
 {
     _oppositeEdge = oppositeEdge;
     _nextVertex = nextVertex;
-    _previousVertex = dynamic_pointer_cast<Vertex>(nextVertex->Previous);
+    ASSERT(nextVertex->Previous->GetType() == CN_Vertex);
+    _previousVertex = std::static_pointer_cast<Vertex>(nextVertex->Previous);
 }
 SingleEdgeChain::~SingleEdgeChain()
 {

@@ -1,5 +1,8 @@
+#include <memory>
 #include "LavUtil.h"
 #include "CircularList.h"
+
+#define ASSERT _ASSERT
 
 /// <summary> Check if two vertex are in the same lav. </summary>
 
@@ -35,7 +38,7 @@ std::shared_ptr<std::vector<std::shared_ptr<Vertex>>> LavUtil::CutLavPart(std::s
     for (size_t i = 0; i < size; i++)
     {
         auto current = next;
-        next = static_pointer_cast<Vertex>(current->Next);
+        next = std::static_pointer_cast<Vertex>(current->Next);
         current->Remove(current);
         ret->push_back(current);
 
@@ -58,7 +61,8 @@ void LavUtil::MergeBeforeBaseVertex(std::shared_ptr<Vertex> base, std::shared_pt
     size_t size = merged->List->Size();
     for (size_t i = 0; i < size; i++)
     {
-        auto nextMerged = dynamic_pointer_cast<Vertex>(merged->Next);
+        ASSERT(merged->Next->GetType() == CN_Vertex);
+        auto nextMerged = std::static_pointer_cast<Vertex>(merged->Next);
         nextMerged->Remove(nextMerged);
 
         base->AddPrevious(base, nextMerged); //TODO verify
@@ -78,7 +82,7 @@ void LavUtil::MoveAllVertexToLavEnd(std::shared_ptr<Vertex> vertex, CircularList
     for (size_t i = 0; i < size; i++)
     {
         auto ver = vertex;
-        vertex = static_pointer_cast<Vertex>(vertex->Next);
+        vertex = std::static_pointer_cast<Vertex>(vertex->Next);
         ver->Remove(ver);
         newLaw.AddLast(ver);
     }

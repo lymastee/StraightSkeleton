@@ -68,5 +68,6 @@ bool LineParametric2d::IsOnRightSite(Vector2d point, double epsilon)
 
 std::string LineParametric2d::ToString() const
 {
-	return std::format("Line [A={0}, U={1}]", A->ToString(), U->ToString());
+	//return std::format("Line [A={0}, U={1}]", A->ToString(), U->ToString());
+	return std::string();
 }

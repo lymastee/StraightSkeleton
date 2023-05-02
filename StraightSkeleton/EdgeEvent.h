@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <format>
+//#include <format>
 #include "SkeletonEvent.h"
 #include "Vertex.h"
 #include "Vector2d.h"
@@ -18,5 +18,6 @@ public:
     EdgeEvent(spv2d point, double distance, spv previousVertex, spv nextVertex);
     ~EdgeEvent();
     std::string ToString();
+    SkeletonEventType GetType() const override { return SE_Edge; }
 };
 

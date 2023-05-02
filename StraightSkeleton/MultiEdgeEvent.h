@@ -13,4 +13,5 @@ public:
     MultiEdgeEvent(spv2d point, double distance, spec chain);
     ~MultiEdgeEvent();
     bool IsObsolete() override;
+    SkeletonEventType GetType() const override { return SE_MultiEdge; }
 };

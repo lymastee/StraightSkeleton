@@ -2,6 +2,12 @@
 #include <string>
 #include <memory>
 
+enum CircularNodeType
+{
+	CN_Vertex,
+	CN_Edge,
+};
+
 class CircularList;
 class CircularNode
 {
@@ -23,6 +29,7 @@ public:
 	CircularNode();
 	CircularNode(spn nextNode, spn prevNode, CircularList* list);
 	virtual ~CircularNode();
+	virtual CircularNodeType GetType() const = 0;
 	void AddNext(spn node, spn newNode);
 	void AddPrevious(spn node, spn newNode);
 	void Remove(spn node);

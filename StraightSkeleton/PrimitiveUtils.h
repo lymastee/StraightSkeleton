@@ -34,7 +34,7 @@ private:
     /// <summary> Error epsilon. Anything that avoids division. </summary>
     static constexpr double SmallNum = 0.00000001;
     /// <summary> Return value if there is no intersection. </summary>
-    inline static const IntersectPoints Empty = IntersectPoints();
+    static const IntersectPoints Empty;
 
 };
 

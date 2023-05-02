@@ -12,4 +12,5 @@ public:
     PickEvent(spv2d point, double distance, spec chain);
     ~PickEvent();
     bool IsObsolete() override;
+    SkeletonEventType GetType() const override { return SE_Pick; }
 };

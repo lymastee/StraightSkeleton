@@ -22,5 +22,6 @@ public:
     spv NextVertex() override;
     spv CurrentVertex() override;
     EChainType ChainType() override;
+    IChainType GetType() const override { return ICT_Edge; }
 };
 

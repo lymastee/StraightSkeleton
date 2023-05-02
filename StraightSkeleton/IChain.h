@@ -3,6 +3,13 @@
 #include "Vertex.h"
 #include "EChainType.h"
 
+enum IChainType
+{
+	ICT_Edge,
+	ICT_SingleEdge,
+	ICT_Split,
+};
+
 class IChain
 {
 private:
@@ -11,6 +18,7 @@ private:
 public:
 	virtual EChainType ChainType() { return EChainType::INVALID; };
 	virtual ~IChain() {};
+	virtual IChainType GetType() const = 0;
 	virtual spe PreviousEdge() { return nullptr; };
 	virtual spe NextEdge() { return nullptr; };
 	virtual spv PreviousVertex() { return nullptr; };

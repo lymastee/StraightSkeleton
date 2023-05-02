@@ -12,7 +12,7 @@ SplitChain::~SplitChain()
 
 std::shared_ptr<Edge> SplitChain::OppositeEdge()
 {
-    if (typeid(*_splitEvent) != typeid(VertexSplitEvent))
+    if (_splitEvent->GetType() != SE_VertexSplit)
         return _splitEvent->OppositeEdge;
     return nullptr;
 }
@@ -29,12 +29,18 @@ std::shared_ptr<Edge> SplitChain::NextEdge()
 
 std::shared_ptr<Vertex> SplitChain::PreviousVertex()
 {
-    return dynamic_pointer_cast<Vertex>(_splitEvent->Parent->Previous);
+    auto p = _splitEvent->Parent->Previous;
+    if (p->GetType() == CN_Vertex)
+        return std::static_pointer_cast<Vertex>(p);
+    return nullptr;
 }
 
 std::shared_ptr<Vertex> SplitChain::NextVertex()
 {
-    return dynamic_pointer_cast<Vertex>(_splitEvent->Parent->Next);
+    auto p = _splitEvent->Parent->Next;
+    if (p->GetType() == CN_Vertex)
+        return std::static_pointer_cast<Vertex>(_splitEvent->Parent->Next);
+    return nullptr;
 }
 
 std::shared_ptr<Vertex> SplitChain::CurrentVertex()

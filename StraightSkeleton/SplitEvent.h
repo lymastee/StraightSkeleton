@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include <format>
+#include <memory>
+//#include <format>
 #include "SkeletonEvent.h"
 #include "Edge.h"
 #include "Vertex.h"
@@ -19,6 +20,7 @@ public:
     ~SplitEvent();
     bool IsObsolete() override;
     std::string ToString();
+    SkeletonEventType GetType() const override { return SE_Split; }
 };
 
 
